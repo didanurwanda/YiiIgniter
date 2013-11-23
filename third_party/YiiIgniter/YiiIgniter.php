@@ -1,7 +1,5 @@
 <?php
 
-defined('YII_DEBUG') or define('YII_DEBUG', false);
-
 abstract class YiiIgniter {
 
     public $charset = 'utf-8';
@@ -12,6 +10,12 @@ abstract class YiiIgniter {
     }
 
     public static function initialize() {
+        if (defined(ENVIRONMENT) && ENVIRONMENT == 'development') {
+            define('YII_DEBUG', true);
+        } else {
+            define('YII_DEBUG', false);
+        }
+
         if (self::$_app == null) {
             self::import('system.*');
             self::import('system.helpers.*');
