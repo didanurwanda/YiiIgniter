@@ -12,7 +12,7 @@ class CWidget {
         return $this->_id = self::$_id_prefix . self::$_id_number++;
     }
 
-    public function registerWidgetData($data) {
+    public function registerWidgetData($data = []) {
         if (is_array($data)) {
             foreach ($data as $key => $val) {
                 $this->$key = $val;
@@ -20,12 +20,12 @@ class CWidget {
         }
     }
 
-    public function createWidget($alias, $data) {
+    public function createWidget($alias, $data = []) {
         $this->beginWidget($alias, $data);
-        $this->endWidget($alias);
+        $this->end($alias);
     }
 
-    public function beginWidget($alias, $data) {
+    public function beginWidget($alias, $data = []) {
         Yii::import($alias);
         $class = Yii::getEndPathOfAlias($alias, '.');
         $this->_widget = new $class;
@@ -36,7 +36,7 @@ class CWidget {
         return $this->_widget;
     }
 
-    public function endWidget($alias) {
+    public function end($alias = '') {
         $this->_widget->run();
         $this->_widget = null;
     }

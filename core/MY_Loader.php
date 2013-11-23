@@ -17,6 +17,6 @@ class MY_Loader extends CI_Loader {
     }
     
     public function end($alias = '') {
-        Yii::app()->widget->endWidget($alias);
+        Yii::app()->widget->end($alias);
     }
 }
