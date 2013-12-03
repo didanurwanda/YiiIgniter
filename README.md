@@ -22,4 +22,3 @@ Run Yii Extensions on CodeIgniter
 * open your view or layout 
 * add {POS_HEAD} to after tag </title>
 * add {POS_END} to before tag </body>
-* finish
