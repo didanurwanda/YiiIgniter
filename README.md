@@ -3,6 +3,7 @@ YiiIgniter
 
 Run Yii Extensions on CodeIgniter
 
+> *Dalam Tahap Pengembangan*
 
 #### Example
 ```php
@@ -20,5 +21,5 @@ Run Yii Extensions on CodeIgniter
 * Extract YiiIgniter-master.zip 
 * Copy folder core and third_party to your project/application
 * open your view or layout 
-* add {POS_HEAD} to after tag </title>
-* add {POS_END} to before tag </body>
+* add {POS_HEAD} to after tag &lt;/title&gt;
+* add {POS_END} to before tag &lt;/body&gt;
