@@ -19,4 +19,7 @@ Run Yii Extensions on CodeIgniter
 * Download YiiIgniter [YiiIgniter-master.zip](https://github.com/didanurwanda/YiiIgniter/archive/master.zip)
 * Extract YiiIgniter-master.zip 
 * Copy folder core and third_party to your project/application
+* open your view or layout 
+* add {POS_HEAD} to after tag </title>
+* add {POS_END} to before tag </body>
 * finish
