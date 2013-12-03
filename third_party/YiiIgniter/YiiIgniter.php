@@ -10,7 +10,7 @@ abstract class YiiIgniter {
     }
 
     public static function initialize() {
-        if (defined(ENVIRONMENT) && ENVIRONMENT == 'development') {
+        if (ENVIRONMENT === 'development') {
             define('YII_DEBUG', true);
         } else {
             define('YII_DEBUG', false);
