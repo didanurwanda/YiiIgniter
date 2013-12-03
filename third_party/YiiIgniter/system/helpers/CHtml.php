@@ -314,6 +314,19 @@ class CHtml {
         return self::tag('input', $htmlOptions);
     }
 
+    public static function htmlButton($label = 'button', $htmlOptions = array()) {
+        if (!isset($htmlOptions['name']))
+            $htmlOptions['name'] = self::ID_PREFIX . self::$count++;
+        if (!isset($htmlOptions['type']))
+            $htmlOptions['type'] = 'button';
+        return self::tag('button', $htmlOptions, $label);
+    }
+
+    public static function submitButton($label = 'submit', $htmlOptions = array()) {
+        $htmlOptions['type'] = 'submit';
+        return self::button($label, $htmlOptions);
+    }
+
     public static function metaTag($content, $name = null, $httpEquiv = null, $options = array()) {
         if ($name !== null)
             $options['name'] = $name;
@@ -368,7 +381,7 @@ class CHtml {
         $htmlOptions = array_merge($defaultHtmlOptions, $htmlOptions);
         return self::tag('script', $htmlOptions, '');
     }
-    
+
     public static function asset($path, $hashByName = false) {
         return Yii::app()->assetManager->publish($path, $hashByName);
     }

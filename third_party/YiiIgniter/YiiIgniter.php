@@ -30,14 +30,17 @@ abstract class YiiIgniter {
     private function registerClass() {
         foreach (self::$_YiiIgniterObject as $key => $val) {
             $this->$val = new $key;
+            if (method_exists($this->$val, 'init')) {
+                $this->$val->init();
+            }
         }
     }
 
     public static function getPathOfAlias($alias) {
         $alias = str_replace('.', '/', $alias);
-        $oldpath = array('application/', 'ext/');
-        $newpath = array('', 'extensions/');
-        return dirname(__FILE__) . DIRECTORY_SEPARATOR . str_replace($oldpath, $newpath, $alias);
+        $oldpath = array('application/', 'ext/', 'sys/', 'zii/');
+        $newpath = array('', 'extensions/', 'system/', 'system/zii/');
+        return dirname(__FILE__) . '/' . str_replace($oldpath, $newpath, $alias);
     }
 
     public static function getEndPathOfAlias($alias, $divider = '/') {
@@ -49,7 +52,7 @@ abstract class YiiIgniter {
         $path = self::getPathOfAlias($alias);
         if (self::getEndPathOfAlias($path) == '*') {
             $path = str_replace('/*', '', $path);
-            foreach (scandir($path) as $key => $val) {
+            foreach (scandir($path, SCANDIR_SORT_DESCENDING) as $key => $val) {
                 if ($val != '.' && $val != '..' && pathinfo($val, PATHINFO_EXTENSION) == 'php') {
                     require_once $path . DIRECTORY_SEPARATOR . $val;
                 }
@@ -76,7 +79,8 @@ abstract class YiiIgniter {
 
     public static $_YiiIgniterObject = array(
         'CWidget' => 'widget',
-        'CAssetManager' => 'assetManager'
+        'CAssetManager' => 'assetManager',
+        'CClientScript' => 'clientScript'
     );
 
 }

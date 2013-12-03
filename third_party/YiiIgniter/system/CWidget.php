@@ -2,17 +2,27 @@
 
 class CWidget {
 
-    public $_id;
-    
-    private static $_id_prefix = 'yw_';
-    private static $_id_number = 0;
+    public $id;
+    private static $id_number = 0;
     private $_widget;
 
-    protected function getId() {
-        return $this->_id = self::$_id_prefix . self::$_id_number++;
+    public function init() {
+        
     }
 
-    public function registerWidgetData($data = []) {
+    public function getId($autoGenerate = true) {
+        if ($this->id !== null) {
+            return $this->id;
+        } else {
+            return $this->id = 'yw_' . self::$id_number++;
+        }
+    }
+
+    public function setId($value) {
+        $this->id = $value;
+    }
+
+    public function registerWidgetData($data = array()) {
         if (is_array($data)) {
             foreach ($data as $key => $val) {
                 $this->$key = $val;
@@ -20,12 +30,12 @@ class CWidget {
         }
     }
 
-    public function createWidget($alias, $data = []) {
+    public function createWidget($alias, $data = array()) {
         $this->beginWidget($alias, $data);
         $this->end($alias);
     }
 
-    public function beginWidget($alias, $data = []) {
+    public function beginWidget($alias, $data = array()) {
         Yii::import($alias);
         $class = Yii::getEndPathOfAlias($alias, '.');
         $this->_widget = new $class;

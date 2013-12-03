@@ -3,6 +3,8 @@
 require_once dirname(__FILE__) . '/../third_party/YiiIgniter/YiiIgniter.php';
 
 class MY_Loader extends CI_Loader {
+    
+    
     public function __construct() {
         parent::__construct();
         Yii::initialize();
@@ -18,5 +20,12 @@ class MY_Loader extends CI_Loader {
     
     public function end($alias = '') {
         Yii::app()->widget->end($alias);
+    }
+    
+    public function view($view, $vars = array(), $return = FALSE) {
+        $view = parent::view($view, $vars, true);
+        $search = array('{POS_HEAD}', '{POS_END}');
+        $replace = array(Yii::app()->clientScript->posHead(), Yii::app()->clientScript->posEnd());
+        echo str_replace($search, $replace, $view);
     }
 }
