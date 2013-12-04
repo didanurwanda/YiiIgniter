@@ -36,8 +36,10 @@ class CWidget {
     }
 
     public function beginWidget($alias, $data = array()) {
-        Yii::import($alias);
         $class = Yii::getEndPathOfAlias($alias, '.');
+        if (!class_exists($class)) {
+            Yii::import($alias);
+        }
         $this->_widget = new $class;
         $this->_widget->registerWidgetData($data);
         if (method_exists($this->_widget, 'init')) {
