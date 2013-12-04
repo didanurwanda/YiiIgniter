@@ -15,10 +15,6 @@ return array(
 	'jquery'=>array(
 		'js'=>array(YII_DEBUG ? 'jquery.js' : 'jquery.min.js'),
 	),
-	'yii'=>array(
-		'js'=>array('jquery.yii.js'),
-		'depends'=>array('jquery'),
-	),
 	'yiitab'=>array(
 		'js'=>array('jquery.yiitab.js'),
 		'depends'=>array('jquery'),
@@ -51,10 +47,6 @@ return array(
 		'js'=>array('jquery.treeview.js', 'jquery.treeview.edit.js', 'jquery.treeview.async.js'),
 		'depends'=>array('jquery', 'cookie'),
 	),
-	'multifile'=>array(
-		'js'=>array('jquery.multifile.js'),
-		'depends'=>array('jquery'),
-	),
 	'rating'=>array(
 		'js'=>array('jquery.rating.js'),
 		'depends'=>array('jquery', 'metadata'),
@@ -62,16 +54,5 @@ return array(
 	'metadata'=>array(
 		'js'=>array('jquery.metadata.js'),
 		'depends'=>array('jquery'),
-	),
-	'bbq'=>array(
-		'js'=>array(YII_DEBUG ? 'jquery.ba-bbq.js' : 'jquery.ba-bbq.min.js'),
-		'depends'=>array('jquery'),
-	),
-	'history'=>array(
-		'js'=>array('jquery.history.js'),
-		'depends'=>array('jquery'),
-	),
-	'punycode'=>array(
-		'js'=>array(YII_DEBUG ? 'punycode.js' : 'punycode.min.js'),
 	),
 );
