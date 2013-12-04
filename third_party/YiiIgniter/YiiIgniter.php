@@ -19,6 +19,7 @@ abstract class YiiIgniter {
         if (self::$_app == null) {
             self::import('system.*');
             self::import('system.helpers.*');
+            self::import('system.widgets.*');
             self::$_app = new Yii;
             self::$_app->registerClass();
             self::$_app->charset = get_instance()->config->item('charset');
@@ -64,6 +65,10 @@ abstract class YiiIgniter {
                 show_error("Unable to load the requested file: " . str_replace('/', '\\', $path . EXT));
             }
         }
+    }
+    
+    public static function t($name, $message) {
+        return $message;
     }
 
     public function __call($name, $arguments) {
