@@ -11,9 +11,6 @@ return array(
     
     // application components
     'components' => array(
-        'user' => array(
-            'class' => 'User'
-        )
     ),
     
     // application-level parameters that can be accessed
