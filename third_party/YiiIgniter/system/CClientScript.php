@@ -20,7 +20,7 @@ class CClientScript {
     public $package = array();
 
     public function registerScriptFile($path, $position = self::POS_HEAD, $htmlOptions = array()) {
-        if ($position == self::POS_END) {
+        if ($position == self::POS_END || $position == self::POS_LOAD) {
             $this->scriptFileBottom[] = CHtml::scriptFile($path, $htmlOptions);
         } elseif ($position == self::POS_BEGIN) {
             echo CHtml::scriptFile($path, $htmlOptions);
