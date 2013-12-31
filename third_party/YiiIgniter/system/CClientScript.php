@@ -41,7 +41,7 @@ class CClientScript {
     }
 
     public function registerScript($id, $script, $position = self::POS_END, $htmlOptions = array()) {
-        if ($position == self::POS_END) {
+        if ($position == self::POS_END || $position == self::POS_LOAD) {
             $this->scriptBottom[$id] = $script;
         } elseif ($position == self::POS_BEGIN) {
             echo CHtml::script($script, $htmlOptions);
