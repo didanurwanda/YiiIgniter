@@ -9,15 +9,15 @@ class MY_Loader extends CI_Loader {
         Yii::initialize();
     }
 
-    public function widget($alias = '', $data = []) {
+    public function widget($alias = '', $data = array()) {
         Yii::app()->widget->createWidget($alias, $data);
     }
 
-    public function beginWidget($alias = '', $data = []) {
+    public function beginWidget($alias = '', $data = array()) {
         return Yii::app()->widget->beginWidget($alias, $data);
     }
 
-    public function end($alias = '') {
+    public function endWidget($alias = '') {
         Yii::app()->widget->end($alias);
     }
 
